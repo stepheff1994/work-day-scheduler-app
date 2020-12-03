@@ -25,35 +25,39 @@ function NumberFormat() {
     document.write("</tr>");
   }
 }
-let startTime = moment().format('h')
+let startTime = moment().format("HH");
 $(document).ready(function () {
   $("#timeTable tr").each(function () {
+    let endTime = $(this).children(":first").attr("id");
+    console.log(endTime);
 
-    let timeString = $(this).children(":first").text()
-    var endTime = moment(timeString, 'h');
-
-    /*
-    if(parseInt(startTime) < parseInt(endTime)) {
-        console.log(startTime, 'is before')
-        $(this).css('background', 'gray')
+    if (parseInt(startTime) > parseInt(endTime)) {
+      console.log(startTime, "the past");
+      $(this).css("background", "gray");
+    } else if (parseInt(startTime) === parseInt(endTime)) {
+      console.log(startTime, "present");
+      $(this).css("background", "red");
+    } else if (parseInt(startTime) < parseInt(endTime)) {
+      console.log(startTime, "the future");
+      $(this).css("background", "green");
     }
-    */
-    /*
-    if(time is before) {
-        
-    }
-
-    else if(time == now) {
-
-    }
-
-    else if (time is later) {
-
-    }
-    else {
-        //possible outliers or errors handled here
-    }
-    */
-
   });
 });
+$(".save-button").click(function () {
+  console.log($(this).parent().siblings()[1].children[0].value);
+  const key = $(this).attr("id");
+  const userInput = $(this).parent().siblings()[1].children[0].value;
+  localStorage.setItem(key, userInput);
+});
+
+var task9 = localStorage.getItem("button9");
+console.log(task9);
+// task9 and display in the textarea box???
+// var task10 = localStorage.getItem(key);
+// var task11 = localStorage.getItem(key);
+// var task12 = localStorage.getItem(key);
+// var task13 = localStorage.getItem(key);
+// var task14 = localStorage.getItem(key);
+// var task15 = localStorage.getItem(key);
+// var task16 = localStorage.getItem(key);
+// var task17 = localStorage.getItem(key);
