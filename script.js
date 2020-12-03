@@ -50,14 +50,13 @@ $(".save-button").click(function () {
   localStorage.setItem(key, userInput);
 });
 
-var task9 = localStorage.getItem("button9");
-console.log(task9);
-// task9 and display in the textarea box???
-// var task10 = localStorage.getItem(key);
-// var task11 = localStorage.getItem(key);
-// var task12 = localStorage.getItem(key);
-// var task13 = localStorage.getItem(key);
-// var task14 = localStorage.getItem(key);
-// var task15 = localStorage.getItem(key);
-// var task16 = localStorage.getItem(key);
-// var task17 = localStorage.getItem(key);
+
+for(var i = 9; i < 18; i++)  {
+  var currentTask = localStorage.getItem("button"+ i)
+  console.log('task ' + i, currentTask)
+  if(currentTask != null) {
+    $('.textarea').eq(i - 9).val(currentTask)
+  }
+}
+
+
